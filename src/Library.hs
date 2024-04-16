@@ -13,9 +13,9 @@ data Cancion = UnaCancion{
     titulo :: String,
     duracion :: Number,
     instrumentosUsados :: [Instrumentos]
-} deriving(Show)
+} deriving(Show, Eq)
 
-data Instrumentos = Guitarra | Bateria | Teclado | Bajo deriving(Show)
+data Instrumentos = Guitarra | Bateria | Teclado | Bajo deriving(Show, Eq)
 
 --Instanciamos la banda
 pdePop :: Banda
@@ -31,6 +31,7 @@ seisDieciocho = UnaCancion{titulo = "Seis Dieciocho", duracion = 3, instrumentos
 laVidaEnHaskell :: Cancion
 laVidaEnHaskell = UnaCancion{titulo = "La vida en Haskell", duracion = 5, instrumentosUsados = []}
 
+--Funciones
 indiceDeAceptacion :: Cancion -> Number
 indiceDeAceptacion cancion
     |head (titulo cancion) == 'M' = 500
@@ -45,5 +46,10 @@ agregoCancionABanda nuevaCancion banda = banda {repertorio = nuevaCancion : repe
 miCodigoHaskell :: Cancion
 miCodigoHaskell = UnaCancion{titulo = "Mi codigo Haskell", duracion = 4, instrumentosUsados = [Teclado, Bateria]}
 
+paradigmaFuncional :: Cancion
+paradigmaFuncional = UnaCancion{titulo = "Paradigma Funcional", duracion = 6, instrumentosUsados = [Guitarra, Bajo, Teclado]}
 
-
+ordenDeCanciones :: Cancion -> Cancion -> Cancion
+ordenDeCanciones cancion1 cancion2
+    |titulo cancion1 < titulo cancion2 = cancion1
+    |titulo cancion1 > titulo cancion2 = cancion2
