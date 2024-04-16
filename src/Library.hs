@@ -7,15 +7,15 @@ doble numero = numero + numero
 data Banda = UnaBanda {
     nombre :: String,
     repertorio :: [Cancion]
-}
+} deriving(Show)
 
 data Cancion = UnaCancion{
     titulo :: String,
     duracion :: Number,
     instrumentosUsados :: [Instrumentos]
-}
+} deriving(Show)
 
-data Instrumentos = Guitarra | Bateria | Teclado | Bajo 
+data Instrumentos = Guitarra | Bateria | Teclado | Bajo deriving(Show)
 
 --Instanciamos la banda
 pdePop :: Banda
@@ -36,7 +36,14 @@ indiceDeAceptacion cancion
     |head (titulo cancion) == 'M' = 500
     |even (duracion cancion) = length (titulo cancion) * 10
     |null(instrumentosUsados cancion) = 10
-    |otherwise = 0
+    |otherwise = 50
+
+agregoCancionABanda :: Cancion -> Banda -> Banda
+agregoCancionABanda nuevaCancion banda = banda {repertorio = nuevaCancion : repertorio banda}
+
+--Nuevas canciones
+miCodigoHaskell :: Cancion
+miCodigoHaskell = UnaCancion{titulo = "Mi codigo Haskell", duracion = 4, instrumentosUsados = [Teclado, Bateria]}
 
 
 
