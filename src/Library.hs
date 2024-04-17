@@ -53,3 +53,9 @@ ordenDeCanciones :: Cancion -> Cancion -> Cancion
 ordenDeCanciones cancion1 cancion2
     |titulo cancion1 < titulo cancion2 = cancion1
     |titulo cancion1 > titulo cancion2 = cancion2
+
+cancionAceptada :: Cancion -> Bool
+cancionAceptada cancion = indiceDeAceptacion cancion > 60
+
+instrumentoParaCancion :: Instrumentos -> Cancion -> Bool
+instrumentoParaCancion instrumento cancion = elem instrumento (instrumentosUsados cancion)
