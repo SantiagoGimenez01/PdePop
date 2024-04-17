@@ -59,3 +59,8 @@ cancionAceptada cancion = indiceDeAceptacion cancion > 60
 
 instrumentoParaCancion :: Instrumentos -> Cancion -> Bool
 instrumentoParaCancion instrumento cancion = elem instrumento (instrumentosUsados cancion)
+
+tocarCancion :: Cancion -> Cancion
+tocarCancion cancion 
+    | cancionAceptada cancion = cancion 
+    | otherwise = cancion {duracion = duracion cancion/2}
